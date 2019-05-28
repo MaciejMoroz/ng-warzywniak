@@ -1,16 +1,20 @@
-<div class="col-md-4">
+<div class="col-md-4" *ngFor="let product of products; let i = index">
   <div class="thumbnail">
-    <img
-      src="https://cdn.galleries.smcloud.net/t/galleries/gf-AqK1-SYtb-mCK1_cebula-droga-jak-pomarancze-664x442-nocrop.jpg"
-      alt="..."
-    />
+    <img [src]="product.img" style=" height: 64px" />
     <div class="caption">
-      <h3>Cebula</h3>
-      <p><strong>price:</strong> $1</p>
+      <h3>{{ product.name }}</h3>
+
       <p>
-        <strong>quant:</strong> 1
-        <a href="#" class="btn btn-primary" role="button">-</a>
-        <a href="#" class="btn btn-default" role="button">+</a>
+        <strong>price: {{ product.price }} zł</strong>
+      </p>
+      <p>
+        <strong>ilość:</strong> {{ quantities[i] }}
+        <button (click)="decreaseQuant(i)" class="btn btn-primary">
+          -
+        </button>
+        <button (click)="increaseQuant(i)" class="btn btn-default">
+          +
+        </button>
       </p>
       <a href="#" class="btn btn-success" role="button">add to cart</a>
     </div>

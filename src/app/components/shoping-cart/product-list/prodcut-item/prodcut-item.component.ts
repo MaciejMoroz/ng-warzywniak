@@ -10,15 +10,24 @@ import { HttpErrorResponse } from "@angular/common/http";
 })
 export class ProdcutItemComponent implements OnInit {
   private products: Product[];
-  private currentProduct: Product;
+  private quantities: any[] = [];
   constructor(private productService: ProductService) {}
-
   ngOnInit() {
-    this.productService.getProducts().then(response => {
-      console.log(response, "response");
-      console.log(response.value, "response.value");
-      this.products = response.value;
-      console.log(this.products, "this.products");
+    this.productService.getProducts().subscribe(response => {
+      this.products = response;
+      this.products.forEach(e => {
+        this.quantities.push(1);
+      });
     });
+  }
+
+  increaseQuant(index: number) {
+    this.quantities[index] += 1;
+  }
+
+  decreaseQuant(index: number) {
+    if (this.quantities[index] >= 2) {
+      this.quantities[index] -= 1;
+    }
   }
 }

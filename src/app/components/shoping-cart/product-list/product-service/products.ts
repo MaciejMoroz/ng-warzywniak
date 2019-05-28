@@ -1,9 +1,7 @@
 export interface Product {
-  _id: string;
+  _id?: string;
   name: string;
+  price: number;
   phtoUrl?: string;
-}
-
-export interface ProductResponse {
-  value: Product[];
+  __v: number;
 }
