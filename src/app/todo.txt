@@ -1,0 +1,7 @@
+
+1 logowanie
+2 karta prodóktów wyswietlana po zalogowaniu, ngFor na produkty przycisk edycji produktu zmiana ilosci szt produktu, koszt wszystkich produktów 
+3 obsługa api dodawanie usuwanie edycja ilosci itp
+4 panel admina dodawanie usuwanie produktów
+5 wszyukiwarka
+6 poprawki wizualne: margin pomiedzy przyciskami, przycisk dodania do koszyka na srodek 
