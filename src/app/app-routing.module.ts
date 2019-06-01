@@ -5,7 +5,7 @@ import { LoginComponent } from "./components/login/login.component";
 import { ShopingCartComponent } from "./components/shoping-cart/shoping-cart.component";
 
 const routes: Routes = [
-  { path: "home", component: ShopingCartComponent },
+  { path: "", component: ShopingCartComponent },
   { path: "login", component: LoginComponent }
 ];
 

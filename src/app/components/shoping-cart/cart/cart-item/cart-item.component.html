@@ -1,0 +1,15 @@
+<h3>koszyk</h3>
+
+<ul class="list-group" *ngFor="let cart of carts; let i = index">
+  <li class="list-group-item">
+    <p>{{ cart.name }}</p>
+    <p>{{ cart._id }}</p>
+    <p>cena/szt: {{ cart.price }}</p>
+    <p>ilość szt: {{ cart.quantity }}</p>
+    <p>razem: {{ cart.price * cart.quantity }}</p>
+    <button class="btn btn-danger btn-xs" (click)="removeProductFromCart(i)">
+      X
+    </button>
+    <p></p>
+  </li>
+</ul>

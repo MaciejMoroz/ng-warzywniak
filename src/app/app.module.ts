@@ -16,6 +16,7 @@ import { CartComponent } from "./components/shoping-cart/cart/cart.component";
 import { ProdcutItemComponent } from "./components/shoping-cart/product-list/prodcut-item/prodcut-item.component";
 // import { LoginComponent } from "./components/login/login.component";
 import { ProductListComponent } from "./components/shoping-cart/product-list/product-list.component";
+import { CartItemComponent } from './components/shoping-cart/cart/cart-item/cart-item.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { ProductListComponent } from "./components/shoping-cart/product-list/pro
     CartComponent,
     ProdcutItemComponent,
     routingComponents,
-    ProductListComponent
+    ProductListComponent,
+    CartItemComponent
     // LoginComponent
   ],
   imports: [BrowserModule, HttpClientModule, AppRoutingModule],
