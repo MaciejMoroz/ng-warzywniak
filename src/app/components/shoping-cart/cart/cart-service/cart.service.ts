@@ -13,20 +13,20 @@ export class CartService {
     console.log("constructor product service");
   }
   getUserCart(id: string): Observable<CartItem[]> {
-    // , authToken: string | number <- dadac logowanie póki co na sztywno
     const headers = new HttpHeaders().set("access-token", "2");
 
     return this.http.get<CartItem[]>(`${this.apiUrl}/cart/${id}`, { headers });
   }
 
   getTotalPrice(id: string): Observable<Pay> {
-    return this.http.get<Pay>(`${this.apiUrl}/pay/${id}`);
+    const headers = new HttpHeaders().set("access-token", "2");
+
+    return this.http.get<Pay>(`${this.apiUrl}/pay/${id}`, { headers });
   }
   removeFromCart(id: string): Observable<CartItem> {
     const headers = new HttpHeaders().set("access-token", "2");
-
-    console.log(`removed ${id}`);
     return this.http.delete<CartItem>(`${this.apiUrl}/cart/5cdb103ef22d99085cc1115e/${id}`, { headers })
   }
+
 
 }

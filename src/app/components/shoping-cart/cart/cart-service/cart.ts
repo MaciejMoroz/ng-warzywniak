@@ -9,3 +9,7 @@ export interface CartItem {
 export interface Pay {
   pay: number;
 }
+export interface CartItemResponse {
+  value: CartItem[];
+}
+

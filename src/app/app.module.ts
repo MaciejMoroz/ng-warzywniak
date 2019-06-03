@@ -18,6 +18,8 @@ import { ProdcutItemComponent } from "./components/shoping-cart/product-list/pro
 import { ProductListComponent } from "./components/shoping-cart/product-list/product-list.component";
 import { CartItemComponent } from './components/shoping-cart/cart/cart-item/cart-item.component';
 
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -37,4 +39,4 @@ import { CartItemComponent } from './components/shoping-cart/cart/cart-item/cart
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule { }
