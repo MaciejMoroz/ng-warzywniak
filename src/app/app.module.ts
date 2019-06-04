@@ -17,6 +17,7 @@ import { ProdcutItemComponent } from "./components/shoping-cart/product-list/pro
 // import { LoginComponent } from "./components/login/login.component";
 import { ProductListComponent } from "./components/shoping-cart/product-list/product-list.component";
 import { CartItemComponent } from './components/shoping-cart/cart/cart-item/cart-item.component';
+import { MsgService } from './components/shoping-cart/product-list/product-service/shared.service';
 
 
 
@@ -36,7 +37,7 @@ import { CartItemComponent } from './components/shoping-cart/cart/cart-item/cart
     // LoginComponent
   ],
   imports: [BrowserModule, HttpClientModule, AppRoutingModule],
-  providers: [],
+  providers: [MsgService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

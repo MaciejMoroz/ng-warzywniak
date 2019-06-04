@@ -1,9 +1,8 @@
 import { Component, OnInit } from "@angular/core";
 import { ProductService } from "../product-service/product.service";
 import { Product } from "../product-service/products";
-import { HttpErrorResponse } from "@angular/common/http";
 import { CartService } from "../../cart/cart-service/cart.service"
-import { CartItem } from "../../cart/cart-service/cart";
+import { MsgService } from '../product-service/shared.service';
 
 @Component({
   selector: "app-prodcut-item",
@@ -14,13 +13,15 @@ export class ProdcutItemComponent implements OnInit {
   private products: Product[];
   private quantities: any[] = [];
   private ids: any[] = [];
-  private carts: CartItem[];
+  newData: any;
 
   constructor(
     private productService: ProductService,
-    private cartService: CartService
+    private cartService: CartService,
+    private data: MsgService
   ) { }
   ngOnInit() {
+    this.data.currentData.subscribe(newData => this.newData = newData)
     this.productService.getProducts().subscribe(response => {
       this.products = response;
       this.products.forEach(e => {
@@ -30,6 +31,7 @@ export class ProdcutItemComponent implements OnInit {
       });
     });
   }
+
 
   increaseQuant(index: number) {
     this.quantities[index] += 1;
@@ -41,12 +43,12 @@ export class ProdcutItemComponent implements OnInit {
     }
   }
   addProductToCart(index: number, ) {
-    // console.log(this.ids[index], this.quantities[index])
-    this.productService.addProductToCart(this.ids[index], this.quantities[index]).subscribe(res =>
-      console.log(res))
+    this.cartService.addProductToCart(this.ids[index], this.quantities[index]).subscribe(res =>
+      this.data.changeData(res)
+    )
 
   }
-  // }).subscribe((pizza) => this.getPizzas());
+
 
 
 }

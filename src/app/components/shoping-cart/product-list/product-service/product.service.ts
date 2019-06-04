@@ -2,7 +2,7 @@ import { Injectable } from "@angular/core";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Product } from "./products";
 import { Observable } from "rxjs";
-import { SharedService } from "./shared.service";
+import { MsgService } from "./shared.service";
 import { CartItem } from '../../cart/cart-service/cart';
 
 @Injectable({
@@ -10,8 +10,8 @@ import { CartItem } from '../../cart/cart-service/cart';
 })
 export class ProductService {
   private apiUrl = "http://localhost:4001";
-  constructor(private http: HttpClient, private sharedService: SharedService) {
-    console.log("constructor product service");
+  constructor(private http: HttpClient, private data: MsgService) {
+
   }
 
   getProducts(): Observable<Product[]> {
@@ -24,6 +24,5 @@ export class ProductService {
     const headers = new HttpHeaders().set("access-token", "2");
 
     return this.http.put<CartItem>(`${this.apiUrl}/cart/5cdb103ef22d99085cc1115e/${id}/${quantity}`, { headers })
-
   }
 }
