@@ -1,8 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { CartService } from "../cart-service/cart.service";
 import { CartItem } from "../cart-service/cart";
-import { MsgService } from "../../product-list/product-service/shared.service";
-
+import { SharedService } from "../../../shared/sharedService/shared.service"
 
 
 @Component({
@@ -15,19 +14,11 @@ export class CartItemComponent implements OnInit {
   public ids: any[] = [];
 
 
-  constructor(private cartService: CartService, private data: MsgService) { }
+  constructor(private cartService: CartService, private data: SharedService) { }
 
   ngOnInit() {
     this.getCarts()
     this.data.currentData.subscribe(() => this.getCarts())
-
-
-  }
-
-  ngOnChanges(changes: CartItem): void {
-    console.log("change");
-
-    this.getCarts()
   }
 
   getCarts() {
@@ -35,8 +26,11 @@ export class CartItemComponent implements OnInit {
       .getUserCart("5cdb103ef22d99085cc1115e")
       .subscribe(response => {
         this.carts = response;
+        this.ids = []
         this.carts.forEach(e => {
+
           this.ids.push(e._id)
+          console.log(response);
 
         })
       });
@@ -55,6 +49,8 @@ export class CartItemComponent implements OnInit {
           this.ids.push(e._id)
         })
         this.getCarts()
+        this.data.changePay(1)
+
       });
   }
 

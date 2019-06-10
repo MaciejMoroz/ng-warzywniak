@@ -2,10 +2,10 @@
   <div class="thumbnail">
     <img [src]="product.img" style=" height: 64px" />
     <div class="caption">
-      <h3>{{ product.name }}</h3>
+      <h3>{{ product.name | titlecase }}</h3>
 
       <p>
-        <strong>price: {{ product.price }} zł</strong>
+        <strong>cena: {{ product.price | currency: "PLN" }}</strong>
       </p>
       <p>
         <strong>ilość:</strong> {{ quantities[i] }}
@@ -21,7 +21,7 @@
         role="button"
         (click)="addProductToCart(i)"
       >
-        add to cart
+        Dodaj do koszyka
       </button>
     </div>
   </div>

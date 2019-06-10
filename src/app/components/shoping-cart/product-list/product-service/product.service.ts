@@ -2,7 +2,7 @@ import { Injectable } from "@angular/core";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Product } from "./products";
 import { Observable } from "rxjs";
-import { MsgService } from "./shared.service";
+import { SharedService } from "../../../shared/sharedService/shared.service";
 import { CartItem } from '../../cart/cart-service/cart';
 
 @Injectable({
@@ -10,7 +10,7 @@ import { CartItem } from '../../cart/cart-service/cart';
 })
 export class ProductService {
   private apiUrl = "http://localhost:4001";
-  constructor(private http: HttpClient, private data: MsgService) {
+  constructor(private http: HttpClient, private data: SharedService) {
 
   }
 

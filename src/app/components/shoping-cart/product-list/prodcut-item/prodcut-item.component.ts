@@ -2,7 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { ProductService } from "../product-service/product.service";
 import { Product } from "../product-service/products";
 import { CartService } from "../../cart/cart-service/cart.service"
-import { MsgService } from '../product-service/shared.service';
+import { SharedService } from '../../../shared/sharedService/shared.service';
 
 @Component({
   selector: "app-prodcut-item",
@@ -14,16 +14,23 @@ export class ProdcutItemComponent implements OnInit {
   private quantities: any[] = [];
   private ids: any[] = [];
   newData: any;
+  newPay: any;
 
   constructor(
     private productService: ProductService,
     private cartService: CartService,
-    private data: MsgService
+    private data: SharedService,
+
   ) { }
   ngOnInit() {
+    this.data.currentPay.subscribe(newPay => this.newPay = newPay)
+
     this.data.currentData.subscribe(newData => this.newData = newData)
+
     this.productService.getProducts().subscribe(response => {
       this.products = response;
+      console.log(response);
+
       this.products.forEach(e => {
         this.quantities.push(1);
 
@@ -43,10 +50,11 @@ export class ProdcutItemComponent implements OnInit {
     }
   }
   addProductToCart(index: number, ) {
-    this.cartService.addProductToCart(this.ids[index], this.quantities[index]).subscribe(res =>
-      this.data.changeData(res)
+    this.cartService.addProductToCart(this.ids[index], this.quantities[index]).subscribe(res => {
+      this.data.changeData(res);
+      this.data.changePay(res)
+    }
     )
-
   }
 
 
